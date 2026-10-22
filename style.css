@@ -67,6 +67,10 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body {
@@ -75,7 +79,11 @@ body {
     font-family: var(--font-body);
     font-weight: 400;
     line-height: 1.6;
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
+    overflow-x: clip;
+    position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -84,6 +92,11 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a {
+    overflow-wrap: break-word;
+    word-break: normal;
 }
 
 a {
@@ -95,6 +108,21 @@ a {
 button, input {
     font-family: inherit;
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="email"],
+input[type="text"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    font-size: 1rem;
+    min-height: 54px;
+    height: 54px;
+    flex-shrink: 0;
 }
 
 /* Legacy Compatibility Aliases */
@@ -138,11 +166,11 @@ button, input {
 .top-bar {
     background-color: var(--color-primary);
     color: var(--color-bg);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 10px 24px;
+    padding: 10px 16px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -150,6 +178,10 @@ button, input {
     gap: 16px;
     position: relative;
     z-index: 1001;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .top-bar-highlight {
@@ -366,33 +398,40 @@ button, input {
     z-index: 1998;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .mobile-drawer-overlay.open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 .mobile-drawer {
     position: fixed;
     top: 0;
-    right: -320px;
-    width: 320px;
+    right: 0;
+    width: 300px;
     max-width: 85vw;
     height: 100%;
     background-color: var(--color-card-bg);
     z-index: 1999;
-    padding: 32px 24px;
+    padding: 28px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: var(--shadow-lg);
-    transition: right var(--transition-base);
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform var(--transition-base), visibility var(--transition-base);
 }
 
 .mobile-drawer.open {
-    right: 0;
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .mobile-drawer-header {
@@ -1180,26 +1219,40 @@ button, input {
     overflow: hidden;
     margin-bottom: 50px;
     box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
 }
 
 .bp-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: 380px;
+    height: 100%;
     object-fit: cover;
     display: block;
-    filter: brightness(0.65);
+    filter: brightness(0.5);
+    z-index: 1;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bp-banner-card:hover .bp-image {
+    transform: scale(1.03);
 }
 
 .bp-banner-overlay {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 40px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+    padding: 60px 40px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.7) 100%);
     color: var(--color-white);
 }
 
@@ -1535,18 +1588,23 @@ button, input {
     display: flex;
     gap: 12px;
     width: 100%;
-    max-width: 440px;
+    max-width: 460px;
+    align-items: stretch;
 }
 
 .vip-email-input {
-    flex: 1;
-    height: 50px;
-    padding: 0 20px;
+    flex: 1 1 auto;
+    min-height: 54px;
+    height: 54px;
+    padding: 0 22px;
     border-radius: var(--radius-pill);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     background-color: rgba(255, 255, 255, 0.08);
     color: var(--color-white);
-    font-size: 0.9rem;
+    font-size: 1rem;
+    line-height: normal;
+    box-sizing: border-box;
+    flex-shrink: 0;
     transition: all var(--transition-fast);
 }
 
@@ -1560,18 +1618,24 @@ button, input {
 }
 
 .vip-access-btn {
-    height: 50px;
-    padding: 0 28px;
+    min-height: 54px;
+    height: 54px;
+    padding: 0 30px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--color-gold);
     background-color: var(--color-gold);
     color: var(--color-primary);
-    font-size: 0.86rem;
+    font-size: 0.92rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     cursor: pointer;
+    flex-shrink: 0;
+    box-sizing: border-box;
     transition: all var(--transition-fast);
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .vip-access-btn:hover {
@@ -1610,6 +1674,7 @@ button, input {
     width: auto;
     object-fit: contain;
     margin-bottom: 20px;
+    filter: invert();
 }
 
 .footer-h4 {
@@ -1705,17 +1770,22 @@ button, input {
     display: flex;
     gap: 10px;
     margin-bottom: 12px;
+    align-items: stretch;
 }
 
 .footer-email-input {
-    flex: 1;
-    height: 48px;
-    padding: 0 18px;
+    flex: 1 1 auto;
+    min-height: 54px;
+    height: 54px;
+    padding: 0 20px;
     border-radius: var(--radius-pill);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     background-color: rgba(255, 255, 255, 0.06);
     color: var(--color-white);
-    font-size: 0.88rem;
+    font-size: 1rem;
+    line-height: normal;
+    box-sizing: border-box;
+    flex-shrink: 0;
     transition: all var(--transition-fast);
 }
 
@@ -1729,17 +1799,23 @@ button, input {
 }
 
 .footer-btn {
-    height: 48px;
-    padding: 0 24px;
+    min-height: 54px;
+    height: 54px;
+    padding: 0 26px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--color-gold);
     background-color: var(--color-gold);
     color: var(--color-primary);
-    font-size: 0.84rem;
+    font-size: 0.9rem;
     font-weight: 700;
     cursor: pointer;
+    flex-shrink: 0;
+    box-sizing: border-box;
     transition: all var(--transition-fast);
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-btn:hover {
@@ -1881,6 +1957,11 @@ button, input {
 
 /* Large Tablets & Small Laptops (max-width: 1200px) */
 @media (max-width: 1200px) {
+    .top-bar-secondary,
+    .top-bar .top-bar-divider:first-of-type {
+        display: none;
+    }
+
     .home-cat-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
@@ -1898,8 +1979,21 @@ button, input {
 
 /* Tablets (max-width: 992px) */
 @media (max-width: 992px) {
+    .top-bar-divider,
+    .top-bar-secondary,
+    .top-bar-highlight {
+        display: none !important;
+    }
+
+    .top-bar {
+        font-size: 0.72rem;
+        padding: 8px 14px;
+        letter-spacing: 0.04em;
+        line-height: 1.4;
+    }
+
     .navbar {
-        padding: 0 24px;
+        padding: 0 20px;
     }
 
     .nav-list {
@@ -1914,10 +2008,13 @@ button, input {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
+        padding: 0 20px;
     }
 
     .hero-text {
         align-items: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .hero-eyebrow::before {
@@ -1931,31 +2028,59 @@ button, input {
     .hero-features {
         justify-content: center;
         flex-wrap: wrap;
+        gap: 16px;
     }
 
     .hero-image-frame {
         max-width: 440px;
+        width: 100%;
+    }
+
+    .home-cat-div {
+        padding: 0 20px;
     }
 
     .promotional-container {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
+        padding: 0 20px;
     }
 
     .promotional-text {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .promotional-actions {
         justify-content: center;
     }
 
+    .bp-wrapper {
+        padding: 0 20px;
+    }
+
+    .bp-banner-card {
+        min-height: 380px;
+    }
+
     .testimony-container {
         grid-template-columns: 1fr;
         gap: 40px;
+        padding: 0 20px;
+    }
+
+    .press-bar {
+        padding: 24px 20px 0;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .vip-wrapper {
+        padding: 0 20px;
     }
 
     .vip-card-container {
@@ -1967,35 +2092,104 @@ button, input {
     }
 
     .vip-text {
-        padding: 40px 30px;
+        padding: 40px 24px;
         align-items: center;
         text-align: center;
     }
 
     .vip-form {
         max-width: 100%;
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+    }
+
+    .vip-email-input {
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        line-height: normal !important;
+        flex: none !important;
+        flex-shrink: 0 !important;
+        font-size: 1rem !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+    }
+
+    .vip-access-btn {
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        flex: none !important;
+        flex-shrink: 0 !important;
+        font-size: 0.95rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .footer-inp-div {
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+    }
+
+    .footer-email-input {
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        line-height: normal !important;
+        flex: none !important;
+        flex-shrink: 0 !important;
+        font-size: 1rem !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+    }
+
+    .footer-btn {
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        flex: none !important;
+        flex-shrink: 0 !important;
+        font-size: 0.95rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .footer-div {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+        padding: 0 20px;
+    }
+
+    .footer-bottom {
+        padding: 24px 20px 0;
     }
 }
 
 /* Mobile Screens (max-width: 640px) */
 @media (max-width: 640px) {
     .top-bar {
-        font-size: 0.7rem;
-        padding: 8px 16px;
-    }
-
-    .top-bar-divider,
-    .top-bar-secondary {
-        display: none;
+        font-size: 0.68rem;
+        padding: 7px 12px;
+        letter-spacing: 0.02em;
+        line-height: 1.4;
     }
 
     .navbar {
-        height: 68px;
+        height: 64px;
         padding: 0 16px;
     }
 
     .main-logo {
-        height: 36px;
+        height: 32px;
+        max-width: 130px;
     }
 
     .nav-btn {
@@ -2003,7 +2197,7 @@ button, input {
     }
 
     .hero-section {
-        padding: 24px 0 60px;
+        padding: 20px 0 50px;
     }
 
     .hero-container,
@@ -2014,25 +2208,74 @@ button, input {
     .vip-wrapper,
     .footer-div,
     .footer-bottom {
-        padding: 0 20px;
+        padding: 0 16px !important;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .hero-h1 {
-        font-size: 2.3rem;
+        font-size: clamp(2rem, 7.5vw, 2.3rem);
+        line-height: 1.15;
     }
 
     .hero-desc {
-        font-size: 0.98rem;
+        font-size: 0.95rem;
+        margin-bottom: 28px;
     }
 
     .hero-btn-container {
         width: 100%;
         flex-direction: column;
+        gap: 12px;
+        margin-bottom: 32px;
     }
 
     .hero-shop-btn,
     .hero-about-btn {
         width: 100%;
+        height: 52px;
+        font-size: 0.94rem;
+    }
+
+    .hero-features {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    .hero-floating-badge {
+        left: 12px;
+        bottom: 12px;
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .badge-text-title {
+        font-size: 0.72rem;
+    }
+
+    .badge-text-sub {
+        font-size: 0.65rem;
+    }
+
+    .section-title {
+        font-size: 1.85rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .category-tabs-container {
+        gap: 8px;
+        margin-bottom: 32px;
+    }
+
+    .category-tab {
+        padding: 8px 16px;
+        font-size: 0.78rem;
     }
 
     .home-cat-container {
@@ -2040,43 +2283,990 @@ button, input {
         gap: 20px;
     }
 
-    .bp-container {
-        grid-template-columns: 1fr;
+    .home-discover-btn {
+        padding: 14px 28px;
+        font-size: 0.82rem;
+        width: 100%;
+        justify-content: center;
     }
 
-    .bp-image {
-        height: 280px;
+    .promotional-section {
+        padding: 60px 0;
+    }
+
+    .promotional-title {
+        font-size: 2.2rem;
+    }
+
+    .promotional-h3 {
+        font-size: 1.3rem;
+    }
+
+    .promotional-description {
+        font-size: 0.92rem;
+        margin-bottom: 24px;
     }
 
     .promo-code-box {
         flex-direction: column;
         width: 100%;
+        padding: 12px 14px;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .promotional-actions {
+        width: 100%;
+    }
+
+    .promotional-btn {
+        width: 100%;
+        height: 52px;
+        font-size: 0.94rem;
+    }
+
+    .brand-pillar-section {
+        padding: 60px 0;
+    }
+
+    .bp-banner-card {
+        min-height: 380px;
+        border-radius: var(--radius-lg);
+        margin-bottom: 24px;
+        position: relative;
+    }
+
+    .bp-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.42);
+    }
+
+    .bp-banner-overlay {
+        padding: 44px 18px;
+    }
+
+    .bp-banner-eyebrow {
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        margin-bottom: 12px;
+    }
+
+    .bp-banner-title {
+        font-size: clamp(1.6rem, 5.5vw, 2rem);
+        line-height: 1.25;
+        margin-bottom: 14px;
+    }
+
+    .bp-banner-desc {
+        font-size: 0.94rem;
+        line-height: 1.65;
+        color: #F4F3EF;
+        max-width: 100%;
+    }
+
+    .bp-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .bp-card {
+        padding: 24px 16px;
+    }
+
+    .testimonials {
+        padding: 60px 0;
+    }
+
+    .testimony-card {
+        padding: 20px 16px;
+    }
+
+    .testimony-h2 {
+        font-size: 1.1rem;
+    }
+
+    .comment {
+        font-size: 0.88rem;
+    }
+
+    .press-bar {
+        padding: 20px 16px 0;
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .press-item {
+        font-size: 1rem;
+    }
+
+    .vip-section {
+        padding: 60px 0;
+    }
+
+    .vip-card-container {
+        border-radius: var(--radius-lg);
+    }
+
+    .vip-image-container {
+        height: 220px;
+    }
+
+    .vip-text {
+        padding: 30px 16px;
+    }
+
+    .vip-h2 {
+        font-size: 1.8rem;
+    }
+
+    .vip-p {
+        font-size: 0.88rem;
+    }
+
+    .vip-perk-item {
+        font-size: 0.8rem;
     }
 
     .vip-form {
         flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .vip-email-input {
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        line-height: normal !important;
+        flex: none !important;
+        flex-shrink: 0 !important;
+        font-size: 1rem !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+        display: block !important;
     }
 
     .vip-access-btn {
-        width: 100%;
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        flex: none !important;
+        flex-shrink: 0 !important;
+        font-size: 0.94rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .footer-section {
+        padding: 60px 0 24px;
     }
 
     .footer-div {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 32px;
+    }
+
+    .footer-logo {
+        height: 42px;
+    }
+
+    .footer-h4 {
+        font-size: 0.86rem;
     }
 
     .footer-inp-div {
         flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .footer-email-input {
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        line-height: normal !important;
+        flex: none !important;
+        flex-shrink: 0 !important;
+        font-size: 1rem !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+        display: block !important;
     }
 
     .footer-btn {
-        width: 100%;
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        flex: none !important;
+        flex-shrink: 0 !important;
+        font-size: 0.94rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
     }
 
     .footer-bottom {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 16px;
+    }
+
+    .footer-payment-badges {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .luxury-toast {
+        left: 12px;
+        right: 12px;
+        bottom: 16px;
+        max-width: calc(100% - 24px);
+        margin: 0 auto;
+        padding: 12px 16px;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+
+    .back-to-top {
+        bottom: 16px;
+        left: 16px;
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+}
+
+/* ==========================================================================
+   17. BRAND V-LOGO PRELOADER & SKELETON LOADERS
+   ========================================================================== */
+
+/* Fullscreen Brand V Preloader */
+.v-preloader {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background: radial-gradient(circle at center, #1C1C20 0%, #0A0A0C 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+}
+
+.v-preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.v-preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* V-Logo Emblem & Rings */
+.v-logo-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+.v-loader-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.v-loader-ring-outer {
+    width: 148px;
+    height: 148px;
+    border: 1.5px solid rgba(197, 168, 128, 0.25);
+    border-top-color: var(--color-gold);
+    border-right-color: rgba(197, 168, 128, 0.6);
+    animation: spinRing 2.8s linear infinite;
+}
+
+.v-loader-ring-inner {
+    width: 124px;
+    height: 124px;
+    border: 1px dashed rgba(197, 168, 128, 0.35);
+    border-bottom-color: var(--color-gold);
+    animation: spinRingReverse 4s linear infinite;
+}
+
+.v-logo-emblem {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: vLogoFloat 2.6s ease-in-out infinite alternate;
+}
+
+.v-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 16px rgba(197, 168, 128, 0.5));
+}
+
+.v-logo-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 70%);
+    transform: translateX(-100%);
+    animation: vShine 2.8s infinite ease-in-out;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+/* V-Loader Meta Info */
+.v-loader-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.v-loader-brand {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--color-white);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.v-loader-tagline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 24px;
+}
+
+.v-loader-progress-track {
+    width: 180px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    position: relative;
+}
+
+.v-loader-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #AF9065 0%, #C5A880 50%, #E8D9BE 100%);
+    box-shadow: 0 0 10px rgba(197, 168, 128, 0.8);
+    transition: width 0.3s ease;
+}
+
+@keyframes spinRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spinRingReverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes vLogoFloat {
+    0% {
+        transform: translateY(0) scale(0.97);
+        filter: drop-shadow(0 0 12px rgba(197, 168, 128, 0.3));
+    }
+    100% {
+        transform: translateY(-6px) scale(1.03);
+        filter: drop-shadow(0 0 24px rgba(197, 168, 128, 0.7));
+    }
+}
+
+@keyframes vShine {
+    0% { transform: translateX(-150%); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateX(150%); opacity: 0; }
+}
+
+/* ==========================================================================
+   SKELETON LOADERS
+   ========================================================================== */
+
+/* Shimmer Wave Keyframe */
+@keyframes skeletonWave {
+    0% {
+        transform: translateX(-100%);
+    }
+    60% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Base Skeleton Class */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: #EFECE6;
+    border-radius: var(--radius-sm);
+}
+
+.skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.55) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: skeletonWave 1.6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card Image Skeleton Placeholder */
+.card-skeleton-placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #EFECE6;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.card-skeleton-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: skeletonWave 1.6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-skeleton-placeholder.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Image Fade-In on Load */
+.home-cat-card-image {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-cat-card-image.loaded {
+    opacity: 1;
+}
+
+/* Standalone Skeleton Card for Filter Transitions */
+.skeleton-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+}
+
+.skeleton-card.active {
+    display: flex;
+}
+
+.skeleton-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1.15;
+}
+
+.skeleton-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skeleton-badge {
+    width: 80px;
+    height: 14px;
+    border-radius: var(--radius-pill);
+}
+
+.skeleton-title {
+    width: 88%;
+    height: 20px;
+}
+
+.skeleton-title-sub {
+    width: 60%;
+    height: 16px;
+}
+
+.skeleton-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.skeleton-price {
+    width: 65px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+.skeleton-btn {
+    width: 95px;
+    height: 38px;
+    border-radius: var(--radius-pill);
+}
+
+/* Dark Section Skeleton (for dark mode or promo/VIP) */
+.skeleton-dark {
+    background-color: #26262B;
+}
+
+.skeleton-dark::after {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.12) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+@media (max-width: 640px) {
+    .v-logo-wrapper {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+
+    .v-loader-ring-outer {
+        width: 120px;
+        height: 120px;
+    }
+
+    .v-loader-ring-inner {
+        width: 100px;
+        height: 100px;
+    }
+
+    .v-logo-emblem {
+        width: 70px;
+        height: 70px;
+    }
+
+    .v-loader-brand {
+        font-size: 1.35rem;
+        letter-spacing: 0.22em;
+    }
+
+    .v-loader-tagline {
+        font-size: 0.65rem;
+        letter-spacing: 0.14em;
+        margin-bottom: 18px;
+    }
+
+    .v-loader-progress-track {
+        width: 140px;
+    }
+}
+
+/* ==========================================================================
+   17. BRAND V-LOGO PRELOADER & SKELETON LOADERS
+   ========================================================================== */
+
+/* Fullscreen Brand V Preloader */
+.v-preloader {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background: radial-gradient(circle at center, #1C1C20 0%, #0A0A0C 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+}
+
+.v-preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.v-preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* V-Logo Emblem & Rings */
+.v-logo-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+.v-loader-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.v-loader-ring-outer {
+    width: 148px;
+    height: 148px;
+    border: 1.5px solid rgba(197, 168, 128, 0.25);
+    border-top-color: var(--color-gold);
+    border-right-color: rgba(197, 168, 128, 0.6);
+    animation: spinRing 2.8s linear infinite;
+}
+
+.v-loader-ring-inner {
+    width: 124px;
+    height: 124px;
+    border: 1px dashed rgba(197, 168, 128, 0.35);
+    border-bottom-color: var(--color-gold);
+    animation: spinRingReverse 4s linear infinite;
+}
+
+.v-logo-emblem {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: vLogoFloat 2.6s ease-in-out infinite alternate;
+}
+
+.v-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 16px rgba(197, 168, 128, 0.5));
+}
+
+.v-logo-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 70%);
+    transform: translateX(-100%);
+    animation: vShine 2.8s infinite ease-in-out;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+/* V-Loader Meta Info */
+.v-loader-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.v-loader-brand {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--color-white);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.v-loader-tagline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 24px;
+}
+
+.v-loader-progress-track {
+    width: 180px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    position: relative;
+}
+
+.v-loader-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #AF9065 0%, #C5A880 50%, #E8D9BE 100%);
+    box-shadow: 0 0 10px rgba(197, 168, 128, 0.8);
+    transition: width 0.3s ease;
+}
+
+@keyframes spinRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spinRingReverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes vLogoFloat {
+    0% {
+        transform: translateY(0) scale(0.97);
+        filter: drop-shadow(0 0 12px rgba(197, 168, 128, 0.3));
+    }
+    100% {
+        transform: translateY(-6px) scale(1.03);
+        filter: drop-shadow(0 0 24px rgba(197, 168, 128, 0.7));
+    }
+}
+
+@keyframes vShine {
+    0% { transform: translateX(-150%); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateX(150%); opacity: 0; }
+}
+
+/* ==========================================================================
+   SKELETON LOADERS
+   ========================================================================== */
+
+/* Shimmer Wave Keyframe */
+@keyframes skeletonWave {
+    0% {
+        transform: translateX(-100%);
+    }
+    60% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Base Skeleton Class */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: #EFECE6;
+    border-radius: var(--radius-sm);
+}
+
+.skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.55) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: skeletonWave 1.6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card Image Skeleton Placeholder */
+.card-skeleton-placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #EFECE6;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.card-skeleton-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: skeletonWave 1.6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-skeleton-placeholder.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Image Fade-In on Load */
+.home-cat-card-image {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-cat-card-image.loaded {
+    opacity: 1;
+}
+
+/* Standalone Skeleton Card for Filter Transitions */
+.skeleton-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+}
+
+.skeleton-card.active {
+    display: flex;
+}
+
+.skeleton-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1.15;
+}
+
+.skeleton-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skeleton-badge {
+    width: 80px;
+    height: 14px;
+    border-radius: var(--radius-pill);
+}
+
+.skeleton-title {
+    width: 88%;
+    height: 20px;
+}
+
+.skeleton-title-sub {
+    width: 60%;
+    height: 16px;
+}
+
+.skeleton-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.skeleton-price {
+    width: 65px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+.skeleton-btn {
+    width: 95px;
+    height: 38px;
+    border-radius: var(--radius-pill);
+}
+
+/* Dark Section Skeleton (for dark mode or promo/VIP) */
+.skeleton-dark {
+    background-color: #26262B;
+}
+
+.skeleton-dark::after {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.12) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+@media (max-width: 640px) {
+    .v-logo-wrapper {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+
+    .v-loader-ring-outer {
+        width: 120px;
+        height: 120px;
+    }
+
+    .v-loader-ring-inner {
+        width: 100px;
+        height: 100px;
+    }
+
+    .v-logo-emblem {
+        width: 70px;
+        height: 70px;
+    }
+
+    .v-loader-brand {
+        font-size: 1.35rem;
+        letter-spacing: 0.22em;
+    }
+
+    .v-loader-tagline {
+        font-size: 0.65rem;
+        letter-spacing: 0.14em;
+        margin-bottom: 18px;
+    }
+
+    .v-loader-progress-track {
+        width: 140px;
     }
 }

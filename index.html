@@ -6,9 +6,48 @@
     <meta name="description" content="VANTIQ — Contemporary luxury silhouettes, master tailoring, and curated capsule drops crafted from world-class fabrics.">
     <title>VANTIQ | Contemporary Luxury & Master Tailoring</title>
     <link rel="icon" type="image/png" href="logos/VANTIQ top logo.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.6">
+    <style>
+        /* Mobile Touch Target & Height Enforcement */
+        input[type="email"], input[type="text"], .vip-email-input, .footer-email-input {
+            min-height: 54px !important;
+            height: 54px !important;
+            font-size: 16px !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
+            box-sizing: border-box !important;
+            flex-shrink: 0 !important;
+        }
+        .vip-access-btn, .footer-btn {
+            min-height: 54px !important;
+            height: 54px !important;
+            box-sizing: border-box !important;
+            flex-shrink: 0 !important;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- LUXURY V-LOGO PRELOADER -->
+    <div class="v-preloader" id="brandPreloader" aria-label="Loading VANTIQ Atelier" role="status">
+        <div class="v-preloader-content">
+            <div class="v-logo-wrapper">
+                <div class="v-loader-ring v-loader-ring-outer"></div>
+                <div class="v-loader-ring v-loader-ring-inner"></div>
+                <div class="v-logo-emblem">
+                    <img src="logos/VANTIQ top logo.png" alt="VANTIQ V Emblem" class="v-logo-img">
+                    <div class="v-logo-shine"></div>
+                </div>
+            </div>
+            <div class="v-loader-meta">
+                <span class="v-loader-brand">VANTIQ</span>
+                <span class="v-loader-tagline">Contemporary Luxury &bull; Autumn / Winter 2026</span>
+                <div class="v-loader-progress-track">
+                    <div class="v-loader-progress-bar" id="vLoaderBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- TOP ANNOUNCEMENT BAR -->
     <aside class="top-bar" aria-label="Announcement">
@@ -107,6 +146,7 @@
                 </div>
                 <div class="hero-image-container">
                     <div class="hero-image-frame">
+                        <div class="card-skeleton-placeholder"></div>
                         <img src="main homepage images/hero image.png" alt="VANTIQ Luxury Editorial Look" class="hero-image" loading="eager">
                         <div class="hero-floating-badge">
                             <span class="badge-indicator"></span>
@@ -137,10 +177,61 @@
                 </div>
 
                 <!-- Product Cards Grid -->
-                <div class="home-cat-container">
+                <div class="home-cat-container" id="homeCatContainer">
+                    <!-- SKELETON CARDS (visible during dynamic filtering / loading transitions) -->
+                    <article class="skeleton-card" id="skeletonCard1">
+                        <div class="skeleton-card-img skeleton"></div>
+                        <div class="skeleton-card-body">
+                            <div class="skeleton-badge skeleton"></div>
+                            <div class="skeleton-title skeleton"></div>
+                            <div class="skeleton-title-sub skeleton"></div>
+                            <div class="skeleton-bottom">
+                                <div class="skeleton-price skeleton"></div>
+                                <div class="skeleton-btn skeleton"></div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="skeleton-card" id="skeletonCard2">
+                        <div class="skeleton-card-img skeleton"></div>
+                        <div class="skeleton-card-body">
+                            <div class="skeleton-badge skeleton"></div>
+                            <div class="skeleton-title skeleton"></div>
+                            <div class="skeleton-title-sub skeleton"></div>
+                            <div class="skeleton-bottom">
+                                <div class="skeleton-price skeleton"></div>
+                                <div class="skeleton-btn skeleton"></div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="skeleton-card" id="skeletonCard3">
+                        <div class="skeleton-card-img skeleton"></div>
+                        <div class="skeleton-card-body">
+                            <div class="skeleton-badge skeleton"></div>
+                            <div class="skeleton-title skeleton"></div>
+                            <div class="skeleton-title-sub skeleton"></div>
+                            <div class="skeleton-bottom">
+                                <div class="skeleton-price skeleton"></div>
+                                <div class="skeleton-btn skeleton"></div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="skeleton-card" id="skeletonCard4">
+                        <div class="skeleton-card-img skeleton"></div>
+                        <div class="skeleton-card-body">
+                            <div class="skeleton-badge skeleton"></div>
+                            <div class="skeleton-title skeleton"></div>
+                            <div class="skeleton-title-sub skeleton"></div>
+                            <div class="skeleton-bottom">
+                                <div class="skeleton-price skeleton"></div>
+                                <div class="skeleton-btn skeleton"></div>
+                            </div>
+                        </div>
+                    </article>
+
                     <!-- Card 1 -->
                     <article class="home-cat-card" data-category="men">
                         <div class="card-image-wrapper">
+                            <div class="card-skeleton-placeholder"></div>
                             <span class="card-tag">Bestseller</span>
                             <button class="wishlist-btn" aria-label="Add to wishlist" data-product-name="Men's Oversized Matching Set">&#9825;</button>
                             <img src="homepage card images/home category card image 1.png" alt="Men's Oversized Matching Set" class="home-cat-card-image" loading="lazy">
@@ -165,6 +256,7 @@
                     <!-- Card 2 -->
                     <article class="home-cat-card" data-category="women">
                         <div class="card-image-wrapper">
+                            <div class="card-skeleton-placeholder"></div>
                             <span class="card-tag">New Season</span>
                             <button class="wishlist-btn" aria-label="Add to wishlist" data-product-name="Women's Crop Top Matching Set">&#9825;</button>
                             <img src="homepage card images/crop top and bottom image.png" alt="Women's Crop Top Matching Set" class="home-cat-card-image" loading="lazy">
@@ -189,6 +281,7 @@
                     <!-- Card 3 -->
                     <article class="home-cat-card" data-category="men">
                         <div class="card-image-wrapper">
+                            <div class="card-skeleton-placeholder"></div>
                             <span class="card-tag">Cashmere Blend</span>
                             <button class="wishlist-btn" aria-label="Add to wishlist" data-product-name="Men's Heavyweight Oversized Hoodie">&#9825;</button>
                             <img src="homepage card images/hoodie image no BG.png" alt="Men's Heavyweight Oversized Hoodie" class="home-cat-card-image" loading="lazy">
@@ -213,6 +306,7 @@
                     <!-- Card 4 -->
                     <article class="home-cat-card" data-category="men">
                         <div class="card-image-wrapper">
+                            <div class="card-skeleton-placeholder"></div>
                             <span class="card-tag">Tailored Drape</span>
                             <button class="wishlist-btn" aria-label="Add to wishlist" data-product-name="Men's Pleated Baggy Trousers">&#9825;</button>
                             <img src="homepage card images/baggy trouser image.png" alt="Men's Pleated Baggy Trousers" class="home-cat-card-image" loading="lazy">
@@ -406,8 +500,8 @@
                         </div>
 
                         <form class="vip-form" id="vipForm">
-                            <input type="email" placeholder="Enter your private email" class="vip-email-input" required aria-label="Email address for VIP membership">
-                            <button type="submit" class="vip-access-btn">Request Access &rarr;</button>
+                            <input type="email" placeholder="Enter your private email" class="vip-email-input" required aria-label="Email address for VIP membership" style="min-height: 54px; height: 54px; font-size: 16px; box-sizing: border-box; flex-shrink: 0;">
+                            <button type="submit" class="vip-access-btn" style="min-height: 54px; height: 54px; font-size: 15px; flex-shrink: 0;">Request Access &rarr;</button>
                         </form>
                     </div>
                 </div>
@@ -469,8 +563,8 @@
                 <h3 class="f-list-h3">The VANTIQ Journal</h3>
                 <p class="footer-input-desc">Subscribe to receive private announcements, capsule previews, and seasonal invitations directly from our creative director.</p>
                 <form class="footer-inp-div" id="footerForm">
-                    <input type="email" name="email" id="email" placeholder="Enter your email address" class="footer-email-input" required aria-label="Email address for newsletter">
-                    <button type="submit" class="footer-btn">Subscribe</button>
+                    <input type="email" name="email" id="email" placeholder="Enter your email address" class="footer-email-input" required aria-label="Email address for newsletter" style="min-height: 54px; height: 54px; font-size: 16px; box-sizing: border-box; flex-shrink: 0;">
+                    <button type="submit" class="footer-btn" style="min-height: 54px; height: 54px; font-size: 15px; flex-shrink: 0;">Subscribe</button>
                 </form>
                 <p class="footer-legal-note">By subscribing, you agree to our Privacy Policy and consent to receive curated updates from VANTIQ. Unsubscribe at any time.</p>
             </div>

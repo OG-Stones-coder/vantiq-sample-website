@@ -5,9 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collections & Categories | VANTIQ Luxury Atelier</title>
     <link rel="icon" type="image/png" href="logos/VANTIQ top logo.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.6">
 </head>
 <body>
+    <!-- LUXURY V-LOGO PRELOADER -->
+    <div class="v-preloader" id="brandPreloader" aria-label="Loading VANTIQ Atelier" role="status">
+        <div class="v-preloader-content">
+            <div class="v-logo-wrapper">
+                <div class="v-loader-ring v-loader-ring-outer"></div>
+                <div class="v-loader-ring v-loader-ring-inner"></div>
+                <div class="v-logo-emblem">
+                    <img src="logos/VANTIQ top logo.png" alt="VANTIQ V Emblem" class="v-logo-img">
+                    <div class="v-logo-shine"></div>
+                </div>
+            </div>
+            <div class="v-loader-meta">
+                <span class="v-loader-brand">VANTIQ</span>
+                <span class="v-loader-tagline">Contemporary Luxury &bull; Autumn / Winter 2026</span>
+                <div class="v-loader-progress-track">
+                    <div class="v-loader-progress-bar" id="vLoaderBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- TOP ANNOUNCEMENT BAR -->
     <aside class="top-bar" aria-label="Announcement">
         <span>Complimentary Worldwide Express Shipping on Orders Over $250</span>
@@ -44,14 +65,16 @@
         </nav>
     </header>
 
-    <main style="max-width: 1440px; margin: 60px auto; padding: 0 40px; text-align: center;">
+    <main style="max-width: 1440px; margin: 60px auto; padding: 0 20px; text-align: center; box-sizing: border-box;">
         <p class="section-eyebrow">Haute Couture & Ready-To-Wear</p>
         <h1 class="hero-h1">All Atelier Collections</h1>
-        <p class="section-subtitle" style="margin-bottom: 40px;">Explore the full VANTIQ archive. Bespoke tailoring and modern silhouettes crafted from rare, sustainable luxury textiles.</p>
-        <div style="display: flex; justify-content: center; gap: 16px;">
+        <p class="section-subtitle" style="margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Explore the full VANTIQ archive. Bespoke tailoring and modern silhouettes crafted from rare, sustainable luxury textiles.</p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
             <a href="index.html#collection" class="hero-shop-btn">View Featured Drops &rarr;</a>
             <a href="index.html" class="hero-about-btn">Return Home</a>
         </div>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
