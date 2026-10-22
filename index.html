@@ -3,217 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VANTIQ Sample site</title>
+    <meta name="description" content="VANTIQ — Contemporary luxury silhouettes, master tailoring, and curated capsule drops crafted from world-class fabrics.">
+    <title>VANTIQ | Contemporary Luxury & Master Tailoring</title>
     <link rel="icon" type="image/png" href="logos/VANTIQ top logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <nav class="navbar">
-            <img src="logos/logo.png" alt="logo" class="main-logo">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <aside class="top-bar" aria-label="Announcement">
+        <span>Complimentary Worldwide Express Shipping on Orders Over $250</span>
+        <span class="top-bar-divider">•</span>
+        <span class="top-bar-secondary">Autumn / Winter 2026 Capsule Now Live</span>
+        <span class="top-bar-divider">•</span>
+        <span class="top-bar-highlight">Complimentary White-Glove Returns</span>
+    </aside>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="navbar-wrapper">
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="nav-brand">
+                <a href="index.html" aria-label="VANTIQ Home">
+                    <img src="logos/logo.png" alt="VANTIQ Luxury Fashion" class="main-logo">
+                </a>
+            </div>
+
             <ul class="nav-list">
-                <li class="nav-links">Home</li>
-                <li class="nav-links">Categories</li>
-                <li class="nav-links">About</li>
-                <li class="nav-links">FAQs</li>
+                <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="categories.html" class="nav-link">Collections</a></li>
+                <li class="nav-item"><a href="#brand-pillars" class="nav-link">Craftsmanship</a></li>
+                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li class="nav-item"><a href="#vip" class="nav-link">Private Circle</a></li>
             </ul>
+
             <div class="nav-btn-container">
-                <button class="nav-btn">Contact Us</button>
-                <div class="cart-icon-div">
-                    <img src="icon images/cart icon.png" alt="cart icon" class="cart-icon">
+                <a href="#vip" class="nav-btn">Client Concierge</a>
+                <div class="nav-actions">
+                    <button class="cart-icon-btn" id="cartBtn" aria-label="View Shopping Bag">
+                        <img src="icon images/cart icon.png" alt="Cart" class="cart-icon">
+                        <span class="cart-badge" id="cartBadge">2</span>
+                    </button>
+                    <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </nav>
-    </div>
-    <section class="hero-section">
-        <div class="hero-div">
-            <div class="hero-text">
-                <h3 class="hero-h3">Define Your Style and Your Presence.</h3>
-                <h2 class="hero-h2">Curated luxury, delivered seamlessly.</h2>
-                <h1 class="hero-h1">Effortless Elegance.</h1>
-                <div class="hero-btn-container">
-                    <button class="hero-shop-btn">Shop Now</button>
-                    <button class="hero-about-btn">About Us</button>
-                </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Menu">
+        <div>
+            <div class="mobile-drawer-header">
+                <img src="logos/logo.png" alt="VANTIQ" class="mobile-drawer-logo">
+                <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation Menu">&times;</button>
             </div>
-            <div class="hero-image-container">
-                <img src="main homepage images/hero image.png" alt="hero image" class="hero-image">
-            </div>
+            <ul class="mobile-drawer-list">
+                <li><a href="index.html" class="mobile-drawer-link">Home</a></li>
+                <li><a href="categories.html" class="mobile-drawer-link">All Collections</a></li>
+                <li><a href="#collection" class="mobile-drawer-link">Featured Pieces</a></li>
+                <li><a href="#promotional" class="mobile-drawer-link">Black Friday Deals</a></li>
+                <li><a href="#brand-pillars" class="mobile-drawer-link">Maison Standards</a></li>
+                <li><a href="#testimonials" class="mobile-drawer-link">Testimonials</a></li>
+                <li><a href="#vip" class="mobile-drawer-link">VIP Private Circle</a></li>
+            </ul>
         </div>
-    </section>
-    <section class="home-categories-section">
-        <div class="home-cat-div">
-            <h2 class="home-cat-h2">Explore Our Featured Collections.</h2>
-            <h3 class="home-cat-h3">Discover our handpicked selection of products that are sure to impress.</h3>
-            <div class="home-cat-container">
-                <div class="home-cat-card">
-                    <img src="homepage card images/home category card image 1.png" alt="card image" class="home-cat-card-image">
-                    <h3 class="home-cat-card-h3">Men's Oversized Matching Set</h3>
-                    <h5 class="home-cat-card-h5">Men</h5>
-                    <p class="home-cat-card-p">$60</p>
-                    <button class="home-cat-card-btn">Add to Cart</button>
+        <div class="mobile-drawer-footer">
+            <a href="#vip" class="hero-shop-btn" style="width: 100%; text-align: center;">Book Styling Concierge</a>
+            <p style="font-size: 0.76rem; color: #888; text-align: center;">© 2026 VANTIQ Atelier. All Rights Reserved.</p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <span class="hero-eyebrow">Autumn / Winter 2026 Editorial</span>
+                    <h1 class="hero-h1">Effortless Elegance, <span class="italic">Defined.</span></h1>
+                    <p class="hero-desc">Curated luxury silhouettes and bespoke master tailoring crafted from world-class fibers for the modern visionary wardrobe.</p>
+                    <div class="hero-btn-container">
+                        <a href="#collection" class="hero-shop-btn">Explore Collection &rarr;</a>
+                        <a href="#brand-pillars" class="hero-about-btn">The Atelier Story</a>
+                    </div>
+                    <div class="hero-features">
+                        <div class="hero-feature-item">
+                            <span class="hero-feature-dot"></span>
+                            <span>100% Sourced Italian Wool</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <span class="hero-feature-dot"></span>
+                            <span>Master Artisan Tailoring</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <span class="hero-feature-dot"></span>
+                            <span>White-Glove Delivery</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="home-cat-card">
-                    <img src="homepage card images/crop top and bottom image.png" alt="card image" class="home-cat-card-image">
-                    <h3 class="home-cat-card-h3">Women's Crop Top Matching Set</h3>
-                    <h5 class="home-cat-card-h5">Women</h5>
-                    <p class="home-cat-card-p">$80</p>
-                    <button class="home-cat-card-btn">Add to Cart</button>
+                <div class="hero-image-container">
+                    <div class="hero-image-frame">
+                        <img src="main homepage images/hero image.png" alt="VANTIQ Luxury Editorial Look" class="hero-image" loading="eager">
+                        <div class="hero-floating-badge">
+                            <span class="badge-indicator"></span>
+                            <div>
+                                <p class="badge-text-title">Signature Capsule</p>
+                                <p class="badge-text-sub">Drop 04 — Limited Release</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="home-cat-card">
-                    <img src="homepage card images/hoodie image no BG.png" alt="card image" class="home-cat-card-image">
-                    <h3 class="home-cat-card-h3">Men's Oversized Hoodie</h3>
-                    <h5 class="home-cat-card-h5">Men</h5>
-                    <p class="home-cat-card-p">$150</p>
-                    <button class="home-cat-card-btn">Add to Cart</button>
-                </div>
-                <div class="home-cat-card">
-                    <img src="homepage card images/baggy trouser image.png" alt="card image" class="home-cat-card-image">
-                    <h3 class="home-cat-card-h3">Men's Baggy Trousers</h3>
-                    <h5 class="home-cat-card-h5">Men</h5>
-                    <p class="home-cat-card-p">$70</p>
-                    <button class="home-cat-card-btn">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- FEATURED CATEGORIES & COLLECTIONS SECTION -->
+        <section class="home-categories-section" id="collection">
+            <div class="home-cat-div">
+                <div class="section-header">
+                    <p class="section-eyebrow">Curated Atelier</p>
+                    <h2 class="section-title">Featured Collections</h2>
+                    <p class="section-subtitle">Discover our handpicked selection of contemporary luxury garments engineered with precision drape, rare fabrics, and lasting sophistication.</p>
                 </div>
 
-            </div>
-            <div class="home-dicover-div">
-                <h3 class="home-discover-content"><img src="icon images/discover icon.png" alt="discover icon" class="discover-icon">Discover More</h3>
-            </div>
-        </div>
-    </section>
-    <section class="promotional-section">
-        <div class="promotional-div">
-            <div class="promotional-text">
-                <h2 class="promotional-title">NEW SEASON</h2>
-                <h3 class="promotional-h3">ELEVATE YOUR EVERYDAY</h3>
-                <p class="promotional-description">Discover the latest <span class="name">VANTIQ</span> collection in Our <span class="black">BLACK FRIDAY DEALS.</span></p>
-            </div>
-            <div class="promotional-image-container">
-                <img src="main homepage images/promotional image.jpeg" alt="promotional image" class="promotional-image">
-            </div>
-        </div>
-    </section>
-    <section class="brand-pillar-section">
-        <div class="bp-div">
-            <img src="main homepage images/brand pillar image.jpeg" alt="section image" class="bp-image">
-            <div class="bp-container">
-                <div class="bp-card">
-                    <img src="badge images/brand pillar badge 1.png" alt="brand image" class="brand-badge">
-                    <h3 class="brand-card-h3">Premium Tailoring</h3>
-                    <h4 class="brand-card-h4">Stitched With Precision</h4>
+                <!-- Filter Tabs -->
+                <div class="category-tabs-container">
+                    <button class="category-tab active" data-filter="all">All Pieces</button>
+                    <button class="category-tab" data-filter="men">Men's Atelier</button>
+                    <button class="category-tab" data-filter="women">Women's Collection</button>
                 </div>
-                <div class="bp-card">
-                    <img src="badge images/brand pillar badge 2.png" alt="brand image" class="brand-badge">
-                    <h3 class="brand-card-h3">Rare Materials</h3>
-                    <h4 class="brand-card-h4">Exceptional Fibres Sourced</h4>
-                </div>
-                <div class="bp-card">
-                    <img src="badge images/brand pillar badge 3.png" alt="brand image" class="brand-badge">
-                    <h3 class="brand-card-h3">Limited Creations</h3>
-                    <h4 class="brand-card-h4">Exclusive Designs Only</h4>
-                </div>
-                <div class="bp-card">
-                    <img src="badge images/brand pillar badge 4.png" alt="brand image" class="brand-badge">
-                    <h3 class="brand-card-h3">Fast Delivery</h3>
-                    <h4 class="brand-card-h4">Worldwide Deliveries</h4>
-                </div>   
-            </div>
-        </div>
-    </section>
-    <section class="testimonials">
-        <div class="testimony-div">
-            <div class="testimony-text">
-                <h3 class="testimony-h3">Testimonials</h3>
-                <div class="testimony-card">
-                    <h2 class="testimony-h2">Unrivaled Quality and Service</h2>
-                    <p class="comment">"The attention to detail on the cashmere coat is extraordinary. From the precise hand-stitching to the luxurious weight of the fabric, every aspect speaks to true artisan craftsmanship. It exceeded all expectations."</p>
-                    <div class="test-user-card">
-                        <div class="user-dp-div">
-                            <img src="user dp images/testimony passport 2.jpeg" alt="user image" class="user-dp">
+
+                <!-- Product Cards Grid -->
+                <div class="home-cat-container">
+                    <!-- Card 1 -->
+                    <article class="home-cat-card" data-category="men">
+                        <div class="card-image-wrapper">
+                            <span class="card-tag">Bestseller</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist" data-product-name="Men's Oversized Matching Set">&#9825;</button>
+                            <img src="homepage card images/home category card image 1.png" alt="Men's Oversized Matching Set" class="home-cat-card-image" loading="lazy">
+                            <button class="card-quick-add add-to-cart-btn" data-product-name="Men's Oversized Matching Set">+ Quick Add to Bag</button>
                         </div>
-                        <div class="user-details">
-                            <h3 class="username">Julian Vance</h3>
-                            <p class="user-status">New User</p>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="home-cat-card-h5">Men's Tailoring</span>
+                                <div class="card-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="card-rating-count">(48)</span></div>
+                            </div>
+                            <h3 class="home-cat-card-h3">Men's Oversized Matching Set</h3>
+                            <div class="card-bottom">
+                                <div>
+                                    <span class="home-cat-card-p">$160</span>
+                                    <span class="card-original-price">$210</span>
+                                </div>
+                                <button class="home-cat-card-btn add-to-cart-btn" data-product-name="Men's Oversized Matching Set">Add to Bag</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="home-cat-card" data-category="women">
+                        <div class="card-image-wrapper">
+                            <span class="card-tag">New Season</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist" data-product-name="Women's Crop Top Matching Set">&#9825;</button>
+                            <img src="homepage card images/crop top and bottom image.png" alt="Women's Crop Top Matching Set" class="home-cat-card-image" loading="lazy">
+                            <button class="card-quick-add add-to-cart-btn" data-product-name="Women's Crop Top Matching Set">+ Quick Add to Bag</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="home-cat-card-h5">Women's Collection</span>
+                                <div class="card-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="card-rating-count">(62)</span></div>
+                            </div>
+                            <h3 class="home-cat-card-h3">Women's Crop Top Matching Set</h3>
+                            <div class="card-bottom">
+                                <div>
+                                    <span class="home-cat-card-p">$180</span>
+                                    <span class="card-original-price">$240</span>
+                                </div>
+                                <button class="home-cat-card-btn add-to-cart-btn" data-product-name="Women's Crop Top Matching Set">Add to Bag</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="home-cat-card" data-category="men">
+                        <div class="card-image-wrapper">
+                            <span class="card-tag">Cashmere Blend</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist" data-product-name="Men's Heavyweight Oversized Hoodie">&#9825;</button>
+                            <img src="homepage card images/hoodie image no BG.png" alt="Men's Heavyweight Oversized Hoodie" class="home-cat-card-image" loading="lazy">
+                            <button class="card-quick-add add-to-cart-btn" data-product-name="Men's Heavyweight Oversized Hoodie">+ Quick Add to Bag</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="home-cat-card-h5">Men's Outerwear</span>
+                                <div class="card-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="card-rating-count">(37)</span></div>
+                            </div>
+                            <h3 class="home-cat-card-h3">Men's Heavyweight Fleece Hoodie</h3>
+                            <div class="card-bottom">
+                                <div>
+                                    <span class="home-cat-card-p">$150</span>
+                                    <span class="card-original-price">$195</span>
+                                </div>
+                                <button class="home-cat-card-btn add-to-cart-btn" data-product-name="Men's Heavyweight Oversized Hoodie">Add to Bag</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="home-cat-card" data-category="men">
+                        <div class="card-image-wrapper">
+                            <span class="card-tag">Tailored Drape</span>
+                            <button class="wishlist-btn" aria-label="Add to wishlist" data-product-name="Men's Pleated Baggy Trousers">&#9825;</button>
+                            <img src="homepage card images/baggy trouser image.png" alt="Men's Pleated Baggy Trousers" class="home-cat-card-image" loading="lazy">
+                            <button class="card-quick-add add-to-cart-btn" data-product-name="Men's Pleated Baggy Trousers">+ Quick Add to Bag</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="home-cat-card-h5">Men's Tailoring</span>
+                                <div class="card-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="card-rating-count">(54)</span></div>
+                            </div>
+                            <h3 class="home-cat-card-h3">Men's Pleated Baggy Trousers</h3>
+                            <div class="card-bottom">
+                                <div>
+                                    <span class="home-cat-card-p">$140</span>
+                                    <span class="card-original-price">$175</span>
+                                </div>
+                                <button class="home-cat-card-btn add-to-cart-btn" data-product-name="Men's Pleated Baggy Trousers">Add to Bag</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Discover More Button -->
+                <div class="home-discover-wrapper">
+                    <a href="categories.html" class="home-discover-btn">
+                        <span>Explore Full Catalog</span>
+                        <img src="icon images/discover icon.png" alt="Explore" class="discover-icon">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROMOTIONAL EDITORIAL SECTION -->
+        <section class="promotional-section" id="promotional">
+            <div class="promotional-container">
+                <div class="promotional-text">
+                    <span class="promotional-tag">Seasonal Capsule</span>
+                    <h2 class="promotional-title">NEW SEASON</h2>
+                    <h3 class="promotional-h3">ELEVATE YOUR EVERYDAY</h3>
+                    <p class="promotional-description">Discover the latest <span class="name">VANTIQ</span> collection with exclusive seasonal pricing in our <span class="black">BLACK FRIDAY ARCHIVE.</span> Uncompromising craftsmanship meets effortless modern silhouette.</p>
+                    
+                    <div class="promo-code-box">
+                        <span class="promo-code-text">VIP Checkout Code:</span>
+                        <span class="promo-code-val" id="promoCodeVal">VANTIQ20</span>
+                        <button class="copy-promo-btn" id="copyPromoBtn" data-code="VANTIQ20">Copy 20% Code</button>
+                    </div>
+
+                    <div class="promotional-actions">
+                        <a href="categories.html" class="promotional-btn">Shop The Drop &rarr;</a>
+                    </div>
+                </div>
+                <div class="promotional-image-container">
+                    <img src="main homepage images/promotional image.jpeg" alt="VANTIQ Promotional Campaign" class="promotional-image" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- BRAND PILLARS / MAISON STANDARDS SECTION -->
+        <section class="brand-pillar-section" id="brand-pillars">
+            <div class="bp-wrapper">
+                <div class="bp-banner-card">
+                    <img src="main homepage images/brand pillar image.jpeg" alt="VANTIQ Artisan Craftsmanship" class="bp-image" loading="lazy">
+                    <div class="bp-banner-overlay">
+                        <span class="bp-banner-eyebrow">The Maison Standards</span>
+                        <h2 class="bp-banner-title">Craftsmanship Without Compromise</h2>
+                        <p class="bp-banner-desc">Every VANTIQ garment undergoes exhaustive fabric curation, precision tailoring, and hand-finishing to ensure enduring beauty and presence.</p>
+                    </div>
+                </div>
+
+                <div class="bp-container">
+                    <div class="bp-card">
+                        <div class="brand-badge-wrapper">
+                            <img src="badge images/brand pillar badge 1.png" alt="Premium Tailoring" class="brand-badge" loading="lazy">
+                        </div>
+                        <h3 class="brand-card-h3">Premium Tailoring</h3>
+                        <h4 class="brand-card-h4">Micro-stitched with millimeter precision for effortless natural drape.</h4>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="brand-badge-wrapper">
+                            <img src="badge images/brand pillar badge 2.png" alt="Rare Materials" class="brand-badge" loading="lazy">
+                        </div>
+                        <h3 class="brand-card-h3">Rare Materials</h3>
+                        <h4 class="brand-card-h4">Exceptional Italian cashmere, mulberry silk, and long-staple cotton sourced directly.</h4>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="brand-badge-wrapper">
+                            <img src="badge images/brand pillar badge 3.png" alt="Limited Creations" class="brand-badge" loading="lazy">
+                        </div>
+                        <h3 class="brand-card-h3">Limited Creations</h3>
+                        <h4 class="brand-card-h4">Individually serialized small-batch capsule drops to guarantee exclusivity.</h4>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="brand-badge-wrapper">
+                            <img src="badge images/brand pillar badge 4.png" alt="Fast Delivery" class="brand-badge" loading="lazy">
+                        </div>
+                        <h3 class="brand-card-h3">White-Glove Delivery</h3>
+                        <h4 class="brand-card-h4">Insured worldwide express courier with signature bespoke gift unboxing.</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section class="testimonials" id="testimonials">
+            <div class="testimony-container">
+                <div class="testimony-content">
+                    <div class="section-header" style="text-align: left; margin: 0;">
+                        <p class="section-eyebrow">Voices of Distinction</p>
+                        <h2 class="section-title">Unrivaled Quality and Service</h2>
+                        <p class="section-subtitle">Read firsthand reflections from patrons who wear VANTIQ across the world's style capitals.</p>
+                    </div>
+
+                    <div class="testimony-cards-wrapper">
+                        <!-- Testimonial 1 -->
+                        <div class="testimony-card">
+                            <div class="testimony-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <h3 class="testimony-h2">"Extraordinary artisan craftsmanship"</h3>
+                            <p class="comment">"The attention to detail on the cashmere coat is extraordinary. From the precise hand-stitching to the luxurious weight of the fabric, every aspect speaks to true artisan craftsmanship. It exceeded all expectations."</p>
+                            <div class="test-user-card">
+                                <div class="user-dp-div">
+                                    <img src="user dp images/testimony passport 2.jpeg" alt="Julian Vance" class="user-dp" loading="lazy">
+                                </div>
+                                <div class="user-details">
+                                    <h4 class="username">Julian Vance</h4>
+                                    <p class="user-status">Verified Patron — Paris, France</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="testimony-card">
+                            <div class="testimony-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <h3 class="testimony-h2">"A Milan personal fitting at home"</h3>
+                            <p class="comment">"Ordering luxury tailoring online can feel like a gamble, but the drape and fit were absolute perfection right out of the box. The packaging and white-glove delivery experience made the unboxing feel like a personal fitting in Milan."</p>
+                            <div class="test-user-card">
+                                <div class="user-dp-div">
+                                    <img src="user dp images/testimony passport.jpeg" alt="Elena Rostova" class="user-dp" loading="lazy">
+                                </div>
+                                <div class="user-details">
+                                    <h4 class="username">Elena Rostova</h4>
+                                    <p class="user-status">Verified Patron — Milan, Italy</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimony-card">
-                    <h2 class="testimony-h2">Flawless Fit and Exemplary Service</h2>
-                    <p class="comment">"Ordering luxury tailoring online can feel like a gamble, but the drape and fit were absolute perfection right out of the box. The packaging and white-glove delivery experience made the unboxing feel like a personal fitting in Milan."</p>
-                    <div class="test-user-card">
-                        <div class="user-dp-div">
-                            <img src="user dp images/testimony passport.jpeg" alt="user image" class="user-dp">
+
+                <div class="testimony-image-div">
+                    <img src="main homepage images/Testimony image.jpeg" alt="VANTIQ Patron Lifestyle" class="testimony-image" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Press Accolades Mention Bar -->
+            <div class="press-bar">
+                <span class="press-item">VOGUE</span>
+                <span class="press-item">GQ EDITORIAL</span>
+                <span class="press-item">HARPER'S BAZAAR</span>
+                <span class="press-item">L'OFFICIEL</span>
+                <span class="press-item">MONOCLE</span>
+            </div>
+        </section>
+
+        <!-- VIP PRIVATE CIRCLE SECTION -->
+        <section class="vip-section" id="vip">
+            <div class="vip-wrapper">
+                <div class="vip-card-container">
+                    <div class="vip-image-container">
+                        <img src="main homepage images/Vip image.png" alt="VANTIQ VIP Private Circle" class="vip-image" loading="lazy">
+                    </div>
+                    <div class="vip-text">
+                        <span class="vip-eyebrow">By Private Invitation</span>
+                        <h2 class="vip-h2">Enter the Private Circle</h2>
+                        <p class="vip-p">Gain priority access to limited-edition capsule drops, invite-only trunk shows, and dedicated private client styling services.</p>
+                        
+                        <div class="vip-perks">
+                            <div class="vip-perk-item">
+                                <span class="diamond">&#9670;</span>
+                                <span>Priority 48-Hour Pre-Order Access to New Capsules</span>
+                            </div>
+                            <div class="vip-perk-item">
+                                <span class="diamond">&#9670;</span>
+                                <span>Complimentary Bespoke Monogramming & Custom Fitting</span>
+                            </div>
+                            <div class="vip-perk-item">
+                                <span class="diamond">&#9670;</span>
+                                <span>Dedicated Personal Styling Concierge Support</span>
+                            </div>
                         </div>
-                        <div class="user-details">
-                            <h3 class="username">Elena Rostova</h3>
-                            <p class="user-status">New User</p>
-                        </div>
+
+                        <form class="vip-form" id="vipForm">
+                            <input type="email" placeholder="Enter your private email" class="vip-email-input" required aria-label="Email address for VIP membership">
+                            <button type="submit" class="vip-access-btn">Request Access &rarr;</button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="testimony-image-div">
-                <img src="main homepage images/Testimony image.jpeg" alt="Testimony Image" class="testimony-image">
-            </div>
-        </div>
-    </section>
-    <section class="vip-section">
-        <div class="vip-div">
-            <div class="vip-image-container">
-                <img src="main homepage images/Vip image.png" alt="vip image" class="vip-image">
-            </div>
-            <div class="vip-text">
-                <h2 class="vip-h2">Enter the Private Circle</h2>
-                <p class="vip-p">Gain priority access to limited-edition capsule drops, invite-only trunk shows, and private client styling.</p>
-                <div class="vip-btn-container">
-                    <button class="vip-shop-btn">Shop New Arrivals</button>
-                    <button class="vip-access-btn">Request VIP Access</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
     <footer class="footer-section">
         <div class="footer-div">
             <div class="footer-brief">
-                <img src="logos/VANTIQ  full logo no BG.png" alt="VANTIQ logo" class="footer-logo">
-                <h4 class="footer-h4">Contemporary luxury and master tailoring crafted for the modern wardrobe.</h4>
+                <a href="index.html" aria-label="VANTIQ Home">
+                    <img src="logos/VANTIQ  full logo no BG.png" alt="VANTIQ Haute Couture Logo" class="footer-logo" loading="lazy">
+                </a>
+                <p class="footer-h4">Contemporary luxury and master tailoring crafted for the modern wardrobe. Defined by understated confidence, timeless fabrics, and enduring elegance.</p>
                 <div class="footer-icons-div">
-                    <img src="icon images/facebook icon.png" alt="facebook icon" class="footer-icon">
-                    <img src="icon images/instagram icon.png" alt="instagram icon" class="footer-icon">
-                    <img src="icon images/whatsapp icon.png" alt="whatsapp icon" class="footer-icon">
-                    <img src="icon images/twitter icon.png" alt="twitter icon" class="footer-icon">
-                    <img src="icon images/tik-tok icon.png" alt="tiktok icon" class="footer-icon">
+                    <a href="https://facebook.com" class="footer-icon-link" aria-label="VANTIQ Facebook" target="_blank" rel="noopener">
+                        <img src="icon images/facebook icon.png" alt="Facebook" class="footer-icon">
+                    </a>
+                    <a href="https://instagram.com" class="footer-icon-link" aria-label="VANTIQ Instagram" target="_blank" rel="noopener">
+                        <img src="icon images/instagram icon.png" alt="Instagram" class="footer-icon">
+                    </a>
+                    <a href="https://whatsapp.com" class="footer-icon-link" aria-label="VANTIQ WhatsApp" target="_blank" rel="noopener">
+                        <img src="icon images/whatsapp icon.png" alt="WhatsApp" class="footer-icon">
+                    </a>
+                    <a href="https://twitter.com" class="footer-icon-link" aria-label="VANTIQ Twitter" target="_blank" rel="noopener">
+                        <img src="icon images/twitter icon.png" alt="Twitter" class="footer-icon">
+                    </a>
+                    <a href="https://tiktok.com" class="footer-icon-link" aria-label="VANTIQ TikTok" target="_blank" rel="noopener">
+                        <img src="icon images/tik-tok icon.png" alt="TikTok" class="footer-icon">
+                    </a>
                 </div>
             </div>
+
             <div class="footer-list-div">
                 <h3 class="f-list-h3">Collections</h3>
                 <ul class="footer-list">
-                    <li class="footer-links">New Arrivals</li>
-                    <li class="footer-links">Men</li>
-                    <li class="footer-links">Women</li>
-                    <li class="footer-links">Limited Editions</li>
+                    <li><a href="categories.html" class="footer-links">New Season Drop</a></li>
+                    <li><a href="categories.html" class="footer-links">Men's Atelier</a></li>
+                    <li><a href="categories.html" class="footer-links">Women's Collection</a></li>
+                    <li><a href="categories.html" class="footer-links">Limited Editions</a></li>
+                    <li><a href="categories.html" class="footer-links">Accessories & Goods</a></li>
                 </ul>
             </div>
+
             <div class="footer-list-div">
-                <h3 class="f-list-h3">Support</h3>
+                <h3 class="f-list-h3">Maison & Support</h3>
                 <ul class="footer-list">
-                    <li class="footer-links">Contact Us</li>
-                    <li class="footer-links">FAQs</li>
-                    <li class="footer-links">Shipping & Delivery</li>
-                    <li class="footer-links">Returns & Exchanges</li>
-                    <li class="footer-links">Privacy Policy</li>
-                    <li class="footer-links">Terms & Conditions</li>
+                    <li><a href="#vip" class="footer-links">Contact Concierge</a></li>
+                    <li><a href="#brand-pillars" class="footer-links">Artisan Heritage</a></li>
+                    <li><a href="#hero" class="footer-links">Shipping & Delivery</a></li>
+                    <li><a href="#hero" class="footer-links">Complimentary Returns</a></li>
+                    <li><a href="#vip" class="footer-links">Private Styling Services</a></li>
+                    <li><a href="#hero" class="footer-links">Care & Preservation</a></li>
                 </ul>
             </div>
+
             <div class="footer-list-input">
-                <h3 f-list-h3>Stay in Touch</h3>
-                <div class="footer-inp-div">
-                    <input type="email" name="email" id="email" placeholder="Enter Your Email Adress" class="footer-email-input">
+                <h3 class="f-list-h3">The VANTIQ Journal</h3>
+                <p class="footer-input-desc">Subscribe to receive private announcements, capsule previews, and seasonal invitations directly from our creative director.</p>
+                <form class="footer-inp-div" id="footerForm">
+                    <input type="email" name="email" id="email" placeholder="Enter your email address" class="footer-email-input" required aria-label="Email address for newsletter">
                     <button type="submit" class="footer-btn">Subscribe</button>
-                </div>
+                </form>
+                <p class="footer-legal-note">By subscribing, you agree to our Privacy Policy and consent to receive curated updates from VANTIQ. Unsubscribe at any time.</p>
             </div>
         </div>
+
         <hr class="footer-hr">
-        <div><h3 class="footer-h3">© 2026 VANTIQ. All Rights Reserved.</h3></div>
+
+        <div class="footer-bottom">
+            <p class="footer-h3">&copy; 2026 VANTIQ Atelier. All Rights Reserved.</p>
+            <div class="footer-payment-badges">
+                <span class="payment-pill">VISA</span>
+                <span class="payment-pill">MASTERCARD</span>
+                <span class="payment-pill">AMEX</span>
+                <span class="payment-pill">APPLE PAY</span>
+                <span class="payment-pill">PAYPAL</span>
+            </div>
+        </div>
     </footer>
+
+    <!-- INTERACTIVE LUXURY TOAST NOTIFICATION -->
+    <div class="luxury-toast" id="luxuryToast" role="alert" aria-live="assertive">
+        <span class="toast-dot"></span>
+        <span class="toast-message" id="toastMessage">Notification message</span>
+    </div>
+
+    <!-- BACK TO TOP FLOATING BUTTON -->
+    <button class="back-to-top" id="backToTopBtn" aria-label="Scroll back to top of page">&uarr;</button>
+
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
 </body>
+</html>
+
 </html>
